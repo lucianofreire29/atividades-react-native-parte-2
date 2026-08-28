@@ -1,0 +1,9 @@
+{
+  "expo": {
+    "name": "atividade-02-contador-evento",
+    "slug": "atividade-02-contador-evento",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light"
+  }
+}
