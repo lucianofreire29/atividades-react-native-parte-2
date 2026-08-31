@@ -32,11 +32,17 @@ export default function App() {
       )}
 
       <View style={styles.botoes}>
-        <TouchableOpacity style={[styles.botao, styles.botaoEntrou]} onPress={entrou}>
+        <TouchableOpacity
+          style={[styles.botao, styles.botaoEntrou]}
+          onPress={entrou}
+        >
           <Text style={styles.textoBotao}>Entrou +1</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.botao, styles.botaoSaiu]} onPress={saiu}>
+        <TouchableOpacity
+          style={[styles.botao, styles.botaoSaiu]}
+          onPress={saiu}
+        >
           <Text style={styles.textoBotao}>Saiu -1</Text>
         </TouchableOpacity>
       </View>
