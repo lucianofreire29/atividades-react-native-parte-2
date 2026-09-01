@@ -10,7 +10,11 @@ import {
 
 export default function App() {
   const [tarefa, setTarefa] = useState('');
-  const [tarefas, setTarefas] = useState([]);
+  const [tarefas, setTarefas] = useState([
+    { id: '1', titulo: 'Separar frutas e verduras' },
+    { id: '2', titulo: 'Organizar as bancas' },
+    { id: '3', titulo: 'Conferir sacolas e embalagens' },
+  ]);
 
   const adicionarTarefa = () => {
     const texto = tarefa.trim();
@@ -37,7 +41,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Feira Limpa</Text>
-      <Text style={styles.subtitulo}>Minha lista de tarefas</Text>
+      <Text style={styles.subtitulo}>Checklist antes da abertura</Text>
 
       <View style={styles.areaEntrada}>
         <TextInput
@@ -57,14 +61,10 @@ export default function App() {
       <FlatList
         data={tarefas}
         keyExtractor={(item) => item.id}
-        contentContainerStyle={
-          tarefas.length === 0 ? styles.listaVazia : styles.lista
-        }
-        ListEmptyComponent={
-          <Text style={styles.mensagemVazia}>Nenhuma tarefa adicionada.</Text>
-        }
+        contentContainerStyle={styles.lista}
         renderItem={({ item }) => (
           <View style={styles.itemTarefa}>
+            <Text style={styles.icone}>✓</Text>
             <Text style={styles.textoTarefa}>{item.titulo}</Text>
 
             <TouchableOpacity
@@ -125,22 +125,19 @@ const styles = StyleSheet.create({
   lista: {
     paddingBottom: 30,
   },
-  listaVazia: {
-    flexGrow: 1,
-  },
-  mensagemVazia: {
-    textAlign: 'center',
-    marginTop: 40,
-    color: '#777777',
-  },
   itemTarefa: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
     backgroundColor: '#ffffff',
     padding: 14,
     marginBottom: 10,
     borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#d9e3d9',
+  },
+  icone: {
+    fontSize: 18,
+    marginRight: 10,
   },
   textoTarefa: {
     flex: 1,
