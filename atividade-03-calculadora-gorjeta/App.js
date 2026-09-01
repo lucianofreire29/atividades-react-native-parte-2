@@ -1,29 +1,13 @@
 import React, { useState } from 'react';
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
   const [valorConta, setValorConta] = useState('');
-  const [porcentagem, setPorcentagem] = useState('10');
-  const [gorjeta, setGorjeta] = useState(0);
-  const [total, setTotal] = useState(0);
 
-  function calcularGorjeta() {
-    const conta = parseFloat(valorConta.replace(',', '.')) || 0;
-    const percentual = parseFloat(porcentagem.replace(',', '.')) || 0;
-
-    const valorGorjeta = conta * (percentual / 100);
-    const valorTotal = conta + valorGorjeta;
-
-    setGorjeta(valorGorjeta);
-    setTotal(valorTotal);
-  }
+  const conta = parseFloat(valorConta.replace(',', '.')) || 0;
+  const gorjeta = conta * 0.1;
+  const total = conta + gorjeta;
 
   return (
     <View style={styles.container}>
@@ -43,22 +27,9 @@ export default function App() {
           onChangeText={setValorConta}
         />
 
-        <Text style={styles.label}>Porcentagem da gorjeta (%)</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Ex.: 10"
-          keyboardType="decimal-pad"
-          value={porcentagem}
-          onChangeText={setPorcentagem}
-        />
-
-        <TouchableOpacity style={styles.botao} onPress={calcularGorjeta}>
-          <Text style={styles.textoBotao}>Calcular</Text>
-        </TouchableOpacity>
-
         <View style={styles.resultado}>
           <Text style={styles.textoResultado}>
-            Gorjeta: R$ {gorjeta.toFixed(2).replace('.', ',')}
+            Gorjeta (10%): R$ {gorjeta.toFixed(2).replace('.', ',')}
           </Text>
           <Text style={styles.total}>
             Total: R$ {total.toFixed(2).replace('.', ',')}
@@ -113,19 +84,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     paddingVertical: 12,
     fontSize: 17,
-    marginBottom: 18,
-  },
-  botao: {
-    backgroundColor: '#2e7d46',
-    paddingVertical: 14,
-    borderRadius: 10,
-    alignItems: 'center',
-    marginTop: 4,
-  },
-  textoBotao: {
-    color: '#ffffff',
-    fontSize: 18,
-    fontWeight: 'bold',
   },
   resultado: {
     backgroundColor: '#eef7f0',

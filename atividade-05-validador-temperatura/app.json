@@ -1,0 +1,9 @@
+{
+  "expo": {
+    "name": "atividade-05-validador-temperatura",
+    "slug": "atividade-05-validador-temperatura",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light"
+  }
+}
